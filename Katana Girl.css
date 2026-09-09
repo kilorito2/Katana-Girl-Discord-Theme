@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @name Katana Girl
  * @author Kilorito
  * @version 1.0
@@ -8508,8 +8508,8 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
   pointer-events: auto !important;
 }
 
-/* 9. Ocultar botones de navegaciÃ³n "AtrÃ¡s" y "Siguiente" */
-[aria-label="AtrÃ¡s"],
+/* 9. Ocultar botones de navegación "Atrás" y "Siguiente" */
+[aria-label="Atrás"],
 [aria-label="Siguiente"],
 [aria-label="Atras"],
 [aria-label="Back"],
@@ -8521,3 +8521,53 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
 [class*="navigationButtons"] {
   display: none !important;
 }
+
+/* ==========================================================================
+   💬 CORRECCIÓN DEL INDICADOR DE ESCRITURA ("ESTÁ ESCRIBIENDO...")
+   Soluciona el texto cortado abajo y solapado con el botón "+" y barra de chat
+   ========================================================================== */
+#app-mount form[class*="form_"],
+#app-mount [class*="channelBottomBarArea_"] {
+  position: relative !important;
+}
+
+#app-mount [class*="typing_"] {
+  position: absolute !important;
+  bottom: calc(100% + 6px) !important;
+  top: auto !important;
+  left: 16px !important;
+  right: auto !important;
+  width: auto !important;
+  max-width: calc(100% - 32px) !important;
+  height: 24px !important;
+  box-sizing: border-box !important;
+  padding: 0 10px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  background: rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+  pointer-events: none !important;
+  z-index: 100 !important;
+}
+
+#app-mount [class*="typing_"] [class*="text_"] {
+  color: #ffffff !important;
+  font-size: 12px !important;
+  line-height: 24px !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+#app-mount [class*="typing_"] [class*="text_"] strong {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+#app-mount [class*="typing_"] [class*="dots_"] {
+  margin-right: 6px !important;
+}

@@ -8545,28 +8545,13 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
   transform: none !important;
 }
 
-/* Colapsar a CERO altura todo contenedor o hermano que no sea la barra de texto dentro del form */
+/* Indicador de escritura flotante (pill) por encima de la barra, sin ocupar espacio en el flujo */
+#app-mount form > [class*="typing_"],
+#app-mount [class*="form_"] > [class*="typing_"],
 #app-mount form > :not([class*="channelTextArea_"]):not([class*="channelBottomBarArea_"]),
 #app-mount [class*="form_"] > :not([class*="channelTextArea_"]):not([class*="channelBottomBarArea_"]),
-#app-mount [class*="channelBottomBarArea_"] > :not([class*="channelTextArea_"]),
-#app-mount [class*="channelTextArea_"] ~ * {
-  position: absolute !important;
-  height: 0px !important;
-  min-height: 0px !important;
-  max-height: 0px !important;
-  margin: 0px !important;
-  padding: 0px !important;
-  border: none !important;
-  bottom: 100% !important;
-  top: auto !important;
-  overflow: visible !important;
-  pointer-events: none !important;
-}
-
-/* Indicador de escritura flotante (pill) por encima de la barra */
 #app-mount [class*="chat_"] [class*="typing_"],
-#app-mount [class*="chatContent_"] [class*="typing_"],
-#app-mount form [class*="typing_"] {
+#app-mount [class*="chatContent_"] [class*="typing_"] {
   position: absolute !important;
   bottom: calc(100% + 6px) !important;
   top: auto !important;
@@ -8578,6 +8563,7 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
   min-height: 24px !important;
   box-sizing: border-box !important;
   padding: 0 10px !important;
+  margin: 0 !important;
   display: inline-flex !important;
   align-items: center !important;
   background: rgba(0, 0, 0, 0.65) !important;

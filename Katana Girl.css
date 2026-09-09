@@ -8526,9 +8526,32 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
    💬 CORRECCIÓN DEL INDICADOR DE ESCRITURA EN EL CHAT ("ESTÁ ESCRIBIENDO...")
    Soluciona el texto cortado abajo y solapado con el botón "+" y barra de chat
    ========================================================================== */
+
+/* Bloquear la barra de chat para que quede fija abajo y NO se levante al escribir */
+:root {
+  --custom-chat-input-margin-bottom: 0px !important;
+}
+
 #app-mount form[class*="form_"],
 #app-mount [class*="channelBottomBarArea_"] {
   position: relative !important;
+  margin-bottom: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+#app-mount form[class*="form_"] [class*="channelTextArea_"],
+#app-mount [class*="channelBottomBarArea_"] [class*="channelTextArea_"],
+#app-mount [class*="channelTextArea_"] {
+  margin-bottom: 0px !important;
+}
+
+/* Evitar que Discord añada espacio inferior cuando se activa el indicador */
+#app-mount form[class*="form_"]:has([class*="typing_"]),
+#app-mount [class*="channelBottomBarArea_"]:has([class*="typing_"]),
+#app-mount [class*="chatContent_"]:has([class*="typing_"]) form[class*="form_"],
+#app-mount [class*="channelTextArea_"]:has(~ [class*="typing_"]) {
+  margin-bottom: 0px !important;
+  padding-bottom: 0px !important;
 }
 
 #app-mount form [class*="typing_"],

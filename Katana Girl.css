@@ -8532,30 +8532,41 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
   --custom-chat-input-margin-bottom: 0px !important;
 }
 
-#app-mount form[class*="form_"],
+#app-mount form,
+#app-mount [class*="form_"],
 #app-mount [class*="channelBottomBarArea_"] {
   position: relative !important;
   margin-bottom: 0px !important;
   padding-bottom: 0px !important;
 }
 
-#app-mount form[class*="form_"] [class*="channelTextArea_"],
-#app-mount [class*="channelBottomBarArea_"] [class*="channelTextArea_"],
 #app-mount [class*="channelTextArea_"] {
   margin-bottom: 0px !important;
+  transform: none !important;
 }
 
-/* Evitar que Discord añada espacio inferior cuando se activa el indicador */
-#app-mount form[class*="form_"]:has([class*="typing_"]),
-#app-mount [class*="channelBottomBarArea_"]:has([class*="typing_"]),
-#app-mount [class*="chatContent_"]:has([class*="typing_"]) form[class*="form_"],
-#app-mount [class*="channelTextArea_"]:has(~ [class*="typing_"]) {
-  margin-bottom: 0px !important;
-  padding-bottom: 0px !important;
+/* Colapsar a CERO altura todo contenedor o hermano que no sea la barra de texto dentro del form */
+#app-mount form > :not([class*="channelTextArea_"]):not([class*="channelBottomBarArea_"]),
+#app-mount [class*="form_"] > :not([class*="channelTextArea_"]):not([class*="channelBottomBarArea_"]),
+#app-mount [class*="channelBottomBarArea_"] > :not([class*="channelTextArea_"]),
+#app-mount [class*="channelTextArea_"] ~ * {
+  position: absolute !important;
+  height: 0px !important;
+  min-height: 0px !important;
+  max-height: 0px !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  border: none !important;
+  bottom: 100% !important;
+  top: auto !important;
+  overflow: visible !important;
+  pointer-events: none !important;
 }
 
-#app-mount form [class*="typing_"],
-#app-mount [class*="channelBottomBarArea_"] [class*="typing_"] {
+/* Indicador de escritura flotante (pill) por encima de la barra */
+#app-mount [class*="chat_"] [class*="typing_"],
+#app-mount [class*="chatContent_"] [class*="typing_"],
+#app-mount form [class*="typing_"] {
   position: absolute !important;
   bottom: calc(100% + 6px) !important;
   top: auto !important;
@@ -8564,6 +8575,7 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
   width: auto !important;
   max-width: calc(100% - 32px) !important;
   height: 24px !important;
+  min-height: 24px !important;
   box-sizing: border-box !important;
   padding: 0 10px !important;
   display: inline-flex !important;
@@ -8577,8 +8589,8 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
   z-index: 100 !important;
 }
 
-#app-mount form [class*="typing_"] [class*="text_"],
-#app-mount [class*="channelBottomBarArea_"] [class*="typing_"] [class*="text_"] {
+#app-mount [class*="chatContent_"] [class*="typing_"] [class*="text_"],
+#app-mount form [class*="typing_"] [class*="text_"] {
   color: #ffffff !important;
   font-size: 12px !important;
   line-height: 24px !important;
@@ -8588,14 +8600,14 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
   text-overflow: ellipsis !important;
 }
 
-#app-mount form [class*="typing_"] [class*="text_"] strong,
-#app-mount [class*="channelBottomBarArea_"] [class*="typing_"] [class*="text_"] strong {
+#app-mount [class*="chatContent_"] [class*="typing_"] [class*="text_"] strong,
+#app-mount form [class*="typing_"] [class*="text_"] strong {
   color: #ffffff !important;
   font-weight: 700 !important;
 }
 
-#app-mount form [class*="typing_"] [class*="dots_"],
-#app-mount [class*="channelBottomBarArea_"] [class*="typing_"] [class*="dots_"] {
+#app-mount [class*="chatContent_"] [class*="typing_"] [class*="dots_"],
+#app-mount form [class*="typing_"] [class*="dots_"] {
   margin-right: 6px !important;
 }
 

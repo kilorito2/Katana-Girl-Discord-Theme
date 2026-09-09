@@ -8218,32 +8218,14 @@ html:only-child > head + body div.app_a3002d > div.app__160d8::before {
   --friend-status-color: #80848e;
 }
 
-/* 2. Anillo circular alrededor del avatar */
-#app-mount [class*="peopleListItem_"] [class*="userInfo_"] > [class*="avatar_"],
-#app-mount [class*="peopleListItem_"] [class*="avatar_"] {
+/* 2. Anillo circular alrededor del avatar (solo sobre el contenedor directo) */
+#app-mount [class*="peopleListItem_"] [class*="userInfo_"] > [class*="avatar_"] {
   margin-left: 4px !important;
   margin-right: 16px !important;
   flex-shrink: 0 !important;
   border-radius: 50% !important;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.75), 0 0 0 4px var(--friend-status-color) !important;
   transition: box-shadow 0.2s ease !important;
-}
-
-/* 3. Avatar redondo completo sin el recorte del punto de estado */
-#app-mount [class*="peopleListItem_"] [class*="avatar_"] foreignObject {
-  -webkit-mask: none !important;
-  mask: none !important;
-  border-radius: 50% !important;
-}
-
-#app-mount [class*="peopleListItem_"] [class*="avatar_"] img {
-  border-radius: 50% !important;
-  display: block !important;
-}
-
-/* 4. Ocultar el puntito redundante de la esquina inferior */
-#app-mount [class*="peopleListItem_"] [class*="avatar_"] rect {
-  display: none !important;
 }
 
 /* Alineación izquierda limpia para el bloque de textos */

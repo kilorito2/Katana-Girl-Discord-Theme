@@ -8163,69 +8163,10 @@ html:only-child > head + body div.app_a3002d > div.app__160d8::before {
   min-width: 0 !important;
 }
 
-/* --------------------------------------------------------------------------
-   🟢 ANILLOS DE ESTADO CIRCULARES EN LA LISTA DE AMIGOS (PEOPLES LIST)
-   Muestra un círculo alrededor de cada avatar con el color de su estado
-   (Verde = En línea, Amarillo = Inactivo, Rojo = No molestar, etc.)
-   -------------------------------------------------------------------------- */
-
-/* 1. Color del anillo según el estado del amigo */
-#app-mount [class*="peopleListItem_"] {
-  --friend-status-color: #23a55a; /* Por defecto: En línea */
-}
-
-/* En línea / Conectado / Online */
-#app-mount [class*="peopleListItem_"]:has(rect[mask*="online"]),
-#app-mount [class*="peopleListItem_"]:has(rect[fill*="23a55a"]),
-#app-mount [class*="peopleListItem_"]:has(rect[fill*="43b581"]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="en línea" i]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="online" i]) {
-  --friend-status-color: #23a55a;
-}
-
-/* Ausente / Inactivo / Idle */
-#app-mount [class*="peopleListItem_"]:has(rect[mask*="idle"]),
-#app-mount [class*="peopleListItem_"]:has(rect[fill*="f0b232"]),
-#app-mount [class*="peopleListItem_"]:has(rect[fill*="faa61a"]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="inactivo" i]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="ausente" i]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="idle" i]) {
-  --friend-status-color: #f0b232;
-}
-
-/* No molestar / DND */
-#app-mount [class*="peopleListItem_"]:has(rect[mask*="dnd"]),
-#app-mount [class*="peopleListItem_"]:has(rect[fill*="f23f43"]),
-#app-mount [class*="peopleListItem_"]:has(rect[fill*="f04747"]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="no molestar" i]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="do not disturb" i]) {
-  --friend-status-color: #f23f43;
-}
-
-/* Transmitiendo / En directo / Streaming */
-#app-mount [class*="peopleListItem_"]:has(rect[mask*="streaming"]),
-#app-mount [class*="peopleListItem_"]:has(rect[fill*="593695"]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="transmitiendo" i]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="streaming" i]) {
-  --friend-status-color: #593695;
-}
-
-/* Desconectado / Invisible / Offline */
-#app-mount [class*="peopleListItem_"]:has(rect[mask*="offline"]),
-#app-mount [class*="peopleListItem_"]:has(rect[fill*="80848e"]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="desconectado" i]),
-#app-mount [class*="peopleListItem_"]:has([aria-label*="offline" i]) {
-  --friend-status-color: #80848e;
-}
-
-/* 2. Anillo circular alrededor del avatar (solo sobre el contenedor directo) */
+/* Avatar del amigo */
 #app-mount [class*="peopleListItem_"] [class*="userInfo_"] > [class*="avatar_"] {
-  margin-left: 4px !important;
-  margin-right: 16px !important;
+  margin-right: 12px !important;
   flex-shrink: 0 !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.75), 0 0 0 4px var(--friend-status-color) !important;
-  transition: box-shadow 0.2s ease !important;
 }
 
 /* Alineación izquierda limpia para el bloque de textos */

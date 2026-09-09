@@ -8523,7 +8523,7 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
 }
 
 /* ==========================================================================
-   💬 CORRECCIÓN DEL INDICADOR DE ESCRITURA ("ESTÁ ESCRIBIENDO...")
+   💬 CORRECCIÓN DEL INDICADOR DE ESCRITURA EN EL CHAT ("ESTÁ ESCRIBIENDO...")
    Soluciona el texto cortado abajo y solapado con el botón "+" y barra de chat
    ========================================================================== */
 #app-mount form[class*="form_"],
@@ -8531,7 +8531,8 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
   position: relative !important;
 }
 
-#app-mount [class*="typing_"] {
+#app-mount form [class*="typing_"],
+#app-mount [class*="channelBottomBarArea_"] [class*="typing_"] {
   position: absolute !important;
   bottom: calc(100% + 6px) !important;
   top: auto !important;
@@ -8553,7 +8554,8 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
   z-index: 100 !important;
 }
 
-#app-mount [class*="typing_"] [class*="text_"] {
+#app-mount form [class*="typing_"] [class*="text_"],
+#app-mount [class*="channelBottomBarArea_"] [class*="typing_"] [class*="text_"] {
   color: #ffffff !important;
   font-size: 12px !important;
   line-height: 24px !important;
@@ -8563,11 +8565,52 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
   text-overflow: ellipsis !important;
 }
 
-#app-mount [class*="typing_"] [class*="text_"] strong {
+#app-mount form [class*="typing_"] [class*="text_"] strong,
+#app-mount [class*="channelBottomBarArea_"] [class*="typing_"] [class*="text_"] strong {
   color: #ffffff !important;
   font-weight: 700 !important;
 }
 
-#app-mount [class*="typing_"] [class*="dots_"] {
+#app-mount form [class*="typing_"] [class*="dots_"],
+#app-mount [class*="channelBottomBarArea_"] [class*="typing_"] [class*="dots_"] {
   margin-right: 6px !important;
-}
+}
+
+/* ==========================================================================
+   👤 CORRECCIÓN DEL INDICADOR EN AVATARES (LISTA DE MIEMBROS)
+   Elimina el círculo negro gigante con tres puntos que se desalinea y pisa
+   al miembro de abajo y al nombre de usuario.
+   ========================================================================== */
+
+/* 1. Resetear cualquier estilo para evitar que herede reglas de chat */
+#app-mount [class*="member_"] [class*="typing_"],
+#app-mount [class*="members_"] [class*="typing_"],
+#app-mount [class*="member_"] [class*="dots_"],
+#app-mount [class*="members_"] [class*="dots_"] {
+  position: static !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* 2. Ocultar la burbuja negra desfasada de 3 puntos en los avatares de miembros */
+#app-mount [class*="member_"] [class*="dots_"],
+#app-mount [class*="members_"] [class*="dots_"],
+#app-mount [class*="member_"] [class*="typingIndicator_"],
+#app-mount [class*="members_"] [class*="typingIndicator_"],
+#app-mount [class*="member_"] [class*="avatar_"] svg:has([class*="dots_"]),
+#app-mount [class*="member_"] [class*="avatar_"] [class*="dots_"],
+#app-mount [class*="member_"] [class*="avatar_"] [class*="typingIndicator_"],
+#app-mount [class*="member_"] [class*="avatar_"] rect[mask*="typing"],
+#app-mount [class*="member_"] [class*="avatar_"] mask[id*="typing"] ~ *,
+#app-mount [class*="member_"] [class*="avatar_"] circle[cx="43%"],
+#app-mount [class*="member_"] [class*="avatar_"] > svg > svg:not(:first-child),
+#app-mount [class*="member_"] [class*="avatar_"] [class*="pointerEvents_"]:has([class*="dots_"]),
+#app-mount [class*="membersWrap_"] [class*="dots_"],
+#app-mount [class*="membersWrap_"] [class*="typingIndicator_"],
+#app-mount [class*="membersWrap_"] svg:has([class*="dots_"]),
+#app-mount [class*="membersWrap_"] rect[mask*="typing"] {
+  display: none !important;
+}
+

@@ -8598,40 +8598,34 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
 }
 
 /* ==========================================================================
-   👤 CORRECCIÓN DEL INDICADOR EN AVATARES (LISTA DE MIEMBROS)
-   Elimina el círculo negro gigante con tres puntos que se desalinea y pisa
-   al miembro de abajo y al nombre de usuario.
+   👤 FOTO DE AVATAR SIEMPRE VISIBLE EN LA LISTA DE MIEMBROS
+   Asegura que la foto del usuario nunca desaparezca cuando esté escribiendo
    ========================================================================== */
 
-/* 1. Resetear cualquier estilo para evitar que herede reglas de chat */
-#app-mount [class*="member_"] [class*="typing_"],
-#app-mount [class*="members_"] [class*="typing_"],
-#app-mount [class*="member_"] [class*="dots_"],
-#app-mount [class*="members_"] [class*="dots_"] {
-  position: static !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
+/* 1. Garantizar que el avatar y su imagen sean SIEMPRE visibles */
+#app-mount [class*="member_"] [class*="avatar_"],
+#app-mount [class*="member_"] [class*="avatar_"] svg,
+#app-mount [class*="member_"] [class*="avatar_"] foreignObject,
+#app-mount [class*="member_"] [class*="avatar_"] img,
+#app-mount [class*="members_"] [class*="avatar_"],
+#app-mount [class*="members_"] [class*="avatar_"] svg,
+#app-mount [class*="members_"] [class*="avatar_"] foreignObject,
+#app-mount [class*="members_"] [class*="avatar_"] img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
-/* 2. Ocultar la burbuja negra desfasada de 3 puntos en los avatares de miembros */
+/* 2. Ocultar únicamente los 3 puntos y el fondo negro desfasado del indicador de escritura */
 #app-mount [class*="member_"] [class*="dots_"],
 #app-mount [class*="members_"] [class*="dots_"],
 #app-mount [class*="member_"] [class*="typingIndicator_"],
 #app-mount [class*="members_"] [class*="typingIndicator_"],
-#app-mount [class*="member_"] [class*="avatar_"] svg:has([class*="dots_"]),
 #app-mount [class*="member_"] [class*="avatar_"] [class*="dots_"],
-#app-mount [class*="member_"] [class*="avatar_"] [class*="typingIndicator_"],
-#app-mount [class*="member_"] [class*="avatar_"] rect[mask*="typing"],
-#app-mount [class*="member_"] [class*="avatar_"] mask[id*="typing"] ~ *,
-#app-mount [class*="member_"] [class*="avatar_"] circle[cx="43%"],
-#app-mount [class*="member_"] [class*="avatar_"] > svg > svg:not(:first-child),
-#app-mount [class*="member_"] [class*="avatar_"] [class*="pointerEvents_"]:has([class*="dots_"]),
-#app-mount [class*="membersWrap_"] [class*="dots_"],
-#app-mount [class*="membersWrap_"] [class*="typingIndicator_"],
-#app-mount [class*="membersWrap_"] svg:has([class*="dots_"]),
-#app-mount [class*="membersWrap_"] rect[mask*="typing"] {
+#app-mount [class*="member_"] [class*="avatar_"] rect[x="14.5"],
+#app-mount [class*="member_"] [class*="avatar_"] [class*="pointerEvents_"][x="14.5"],
+#app-mount [class*="member_"] [class*="avatar_"] svg > [class*="dots_"] {
   display: none !important;
 }
+
 

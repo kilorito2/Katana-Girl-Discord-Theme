@@ -8536,22 +8536,22 @@ nav [class*="badge"]:not([class*="numberBadge"]):not([class*="iconBadge"]),
 #app-mount [class*="form_"],
 #app-mount [class*="channelBottomBarArea_"] {
   position: relative !important;
+  width: 100% !important;
   margin-bottom: 0px !important;
   padding-bottom: 0px !important;
 }
 
 #app-mount [class*="channelTextArea_"] {
+  width: 100% !important;
   margin-bottom: 0px !important;
   transform: none !important;
 }
 
 /* Indicador de escritura flotante (pill) por encima de la barra, sin ocupar espacio en el flujo */
-#app-mount form > [class*="typing_"],
-#app-mount [class*="form_"] > [class*="typing_"],
-#app-mount form > :not([class*="channelTextArea_"]):not([class*="channelBottomBarArea_"]),
-#app-mount [class*="form_"] > :not([class*="channelTextArea_"]):not([class*="channelBottomBarArea_"]),
+#app-mount [class*="chatContent_"] [class*="typing_"],
 #app-mount [class*="chat_"] [class*="typing_"],
-#app-mount [class*="chatContent_"] [class*="typing_"] {
+#app-mount form [class*="typing_"],
+#app-mount [class*="form_"] [class*="typing_"] {
   position: absolute !important;
   bottom: calc(100% + 6px) !important;
   top: auto !important;
